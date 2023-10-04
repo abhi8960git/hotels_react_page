@@ -10,6 +10,7 @@ import {SiApacheopenoffice} from 'react-icons/si';
 import {GiClosedDoors} from 'react-icons/gi';
 import {FcRating} from 'react-icons/fc';
 import { Link, NavLink } from 'react-router-dom';
+import {MdPreview} from 'react-icons/md';
 // PropertyDetails Component
 const PropertyDetails = (props) => {
   // console.log(props)
@@ -54,6 +55,8 @@ const PriceAndReadMore = (props) => {
         <span className="text-[#5a5de7] font-[700] ">${props.rates}</span>
         <span className="text-sm text-black ml-1">/month</span>
       </p>
+      <NavLink to={`/card/${props.itemss.hotel_id}`}><span className="text-3xl text-[#5a5de7]"><MdPreview/></span></NavLink>
+
       <button  className=" hover:bg-[#5a5de7] hover:text-white transition-all duration-300 ease-in-out  font-[600] border  border-[#5a5de7] p-1 text-[#5a5de7] rounded-full px-4 py-1.5">
        <a href={props.read_more}>Book </a>
       </button>
@@ -87,9 +90,8 @@ const Card = () => {
   
         <PropertyDetails address={itemss.addressline1} name={itemss.hotel_name} />
         <BuildingInfo rooms={itemss.numberrooms} checkin={itemss.checkin} checkout={itemss.checkout} rating={itemss.rating_average} />
-        <PriceAndReadMore  rates={itemss.rates_from} read_more={itemss.url} />
-        <NavLink to={`/card/${itemss.hotel_id}`}>View</NavLink>
-
+        <PriceAndReadMore itemss={itemss}  rates={itemss.rates_from} read_more={itemss.url} />
+        
       </div>
       ))
     }
